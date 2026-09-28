@@ -1,15 +1,45 @@
 <div class="container">
   <h2>Lista de Processos</h2>
 
-  <!-- O @for percorre a lista. O pipe "async" resolve a requisição em tempo real -->
-  @for (item of (processos | async); track item.id_processo) {
-    <div class="card-processo">
-      <h3>Processo Número: {{ item.nr_processo }}</h3>
-      <p><strong>Origem:</strong> {{ item.nr_processo_origem }}</p>
-      <p><strong>Descrição:</strong> {{ item.ds_complemento }}</p>
-      <small>Período: {{ item.dt_inicio }} até {{ item.dt_fim }}</small>
-    </div>
-  } @empty {
-    <p>Nenhum processo encontrado ou carregando...</p>
-  }
+  <div class="table-responsive">
+    <!-- Passamos o Observable direto no [dataSource] -->
+    <table mat-table [dataSource]="processos" class="mat-elevation-z1">
+
+      <!-- Coluna ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id_processo}} </td>
+      </ng-container>
+
+      <!-- Coluna Número do Processo -->
+      <ng-container matColumnDef="numero">
+        <th mat-header-cell *matHeaderCellDef> Número </th>
+        <td mat-cell *matCellDef="let element"> **{{element.nr_processo}}** </td>
+      </ng-container>
+
+      <!-- Coluna Origem -->
+      <ng-container matColumnDef="origem">
+        <th mat-header-cell *matHeaderCellDef> Origem </th>
+        <td mat-cell *matCellDef="let element"> {{element.nr_processo_origem}} </td>
+      </ng-container>
+
+      <!-- Coluna Descrição -->
+      <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef> Descrição </th>
+        <td mat-cell *matCellDef="let element"> {{element.ds_complemento}} </td>
+      </ng-container>
+
+      <!-- Coluna Período (Datas combinadas) -->
+      <ng-container matColumnDef="datas">
+        <th mat-header-cell *matHeaderCellDef> Período </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.dt_inicio | date:'dd/MM/yyyy'}} - {{element.dt_fim | date:'dd/MM/yyyy'}}
+        </td>
+      </ng-container>
+
+      <!-- Declaração das linhas de cabeçalho e dados baseadas no displayedColumns -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </div>
