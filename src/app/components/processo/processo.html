@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Lista de Processos</h2>
+
+  <!-- O @for percorre a lista. O pipe "async" resolve a requisição em tempo real -->
+  @for (item of (processos | async); track item.id_processo) {
+    <div class="card-processo">
+      <h3>Processo Número: {{ item.nr_processo }}</h3>
+      <p><strong>Origem:</strong> {{ item.nr_processo_origem }}</p>
+      <p><strong>Descrição:</strong> {{ item.ds_complemento }}</p>
+      <small>Período: {{ item.dt_inicio }} até {{ item.dt_fim }}</small>
+    </div>
+  } @empty {
+    <p>Nenhum processo encontrado ou carregando...</p>
+  }
+</div>

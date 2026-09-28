@@ -1,0 +1,90 @@
+/* Container principal que centraliza o conteúdo na tela */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #333333;
+}
+
+/* Estilização do título principal */
+.container h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #1a2b4c; /* Azul escuro corporativo/jurídico */
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+/* Layout em grade: se adapta de 1 coluna (mobile) até 3 colunas (desktop) */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Criando um container para envelopar os cards (o Angular @for vai repetir o .card-processo aqui dentro) */
+/* Dica: se quiser aplicar o grid, você pode envelopar o @for em uma <div class="grid-processos">,
+   mas para manter o seu HTML intacto, aplicaremos um fluxo flex/grid elegante direto nos cards */
+
+.card-processo {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 5px solid #2b6cb0; /* Detalhe em azul na lateral esquerda */
+}
+
+/* Efeito sutil ao passar o mouse por cima do card */
+.card-processo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-left-color: #3182ce;
+}
+
+/* Título interno do card (Número do processo) */
+.card-processo h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* Estilização dos parágrafos de informação */
+.card-processo p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+  line-height: 1.5;
+}
+
+/* Destaca as etiquetas (Origem, Descrição, etc) */
+.card-processo p strong {
+  color: #718096;
+  font-weight: 500;
+  margin-right: 0.25rem;
+}
+
+/* Rodapé do card (Período/Datas) */
+.card-processo small {
+  display: block;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #e2e8f0;
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+/* Estilização para o estado de lista vazia ou carregamento */
+.container > p {
+  text-align: center;
+  color: #a0aec0;
+  font-style: italic;
+  padding: 3rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  border: 2px dashed #e2e8f0;
+}
