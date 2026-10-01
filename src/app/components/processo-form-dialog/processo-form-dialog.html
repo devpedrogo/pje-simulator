@@ -1,0 +1,37 @@
+<div class="dialog-container">
+  <mat-dialog-content>
+    <h2>{{ formTitle }}</h2>
+    <form [formGroup]="processoForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Número do Processo</mat-label>
+        <input matInput name="num_processo" formControlName="num_processo">
+        <mat-error>Você deve digitar o número do processo</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Processo de Origem</mat-label>
+        <input matInput name="origem" formControlName="origem">
+        <mat-error>Você deve digitar o número do processo de origem</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Complemento</mat-label>
+        <input matInput name="ds_complemento" formControlName="ds_complemento">
+        <mat-error>Você deve digitar um complemento do processo</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Data Inicio</mat-label>
+        <input matInput name="dataI" [matDatepicker]="pickerI" formControlName="dataI">
+        <mat-datepicker-toggle matIconSuffix [for]="pickerI"></mat-datepicker-toggle>
+        <mat-datepicker #pickerI></mat-datepicker>
+        <mat-error>Você deve digitar a data de inicio</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Data Fim</mat-label>
+        <input matInput name="dataF" [matDatepicker]="pickerF" formControlName="dataF">
+        <mat-datepicker-toggle matIconSuffix [for]="pickerF"></mat-datepicker-toggle>
+        <mat-datepicker #pickerF></mat-datepicker>
+        <mat-error>Você deve digitar a data do fim</mat-error>
+      </mat-form-field>
+      <button mat-flat-button [disabled]="!processoForm.valid">{{ submitButtonLabel }}</button>
+    </form>
+  </mat-dialog-content>
+</div>
