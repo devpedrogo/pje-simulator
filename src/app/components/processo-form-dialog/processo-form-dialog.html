@@ -22,14 +22,14 @@
         <input matInput name="dataI" [matDatepicker]="pickerI" formControlName="dataI">
         <mat-datepicker-toggle matIconSuffix [for]="pickerI"></mat-datepicker-toggle>
         <mat-datepicker #pickerI></mat-datepicker>
-        <mat-error>Você deve digitar a data de inicio</mat-error>
+        <mat-error>Você deve digitar a data de inicio do processo</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Data Fim</mat-label>
         <input matInput name="dataF" [matDatepicker]="pickerF" formControlName="dataF">
         <mat-datepicker-toggle matIconSuffix [for]="pickerF"></mat-datepicker-toggle>
         <mat-datepicker #pickerF></mat-datepicker>
-        <mat-error>Você deve digitar a data do fim</mat-error>
+        <mat-error>Você deve digitar a data do fim do processo</mat-error>
       </mat-form-field>
       <button mat-flat-button [disabled]="!processoForm.valid">{{ submitButtonLabel }}</button>
     </form>
